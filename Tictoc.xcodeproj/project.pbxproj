@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		707C94051D1302AB00860F8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C94041D1302AB00860F8B /* Time.swift */; };
 		_LinkFileRef_Tictoc_via_TictocTestSuite /* Tictoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tictoc" /* Tictoc.framework */; };
 		__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */; };
 		__src_cc_ref_Tests/Tictoc/TictocTests.swift /* TictocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Tictoc/TictocTests.swift /* TictocTests.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		707C94041D1302AB00860F8B /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tictoc.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/Tictoc/TictocTests.swift /* TictocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TictocTests.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */,
+				707C94041D1302AB00860F8B /* Time.swift */,
 				__PBXFileRef_Tictoc_Info.plist /* Tictoc_Info.plist */,
 			);
 			name = Tictoc;
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				707C94051D1302AB00860F8B /* Time.swift in Sources */,
 				__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
