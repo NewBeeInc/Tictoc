@@ -31,6 +31,10 @@ let SEC_PER_DAY = 86400
 let SEC_PER_HOUR = 3600
 let SEC_PER_MINUTE = 60
 
+public let NOW = Tictoc().now
+public let MOMENT = Tictoc().moment
+public let TODAY = Tictoc().today
+
 // MARK: -
 public extension Tictoc {
 	/// current now
