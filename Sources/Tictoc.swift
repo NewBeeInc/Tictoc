@@ -1,4 +1,4 @@
-struct Tictoc {
+public struct Tictoc {
 
     var text = "Hello, World!"
 }
