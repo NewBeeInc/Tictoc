@@ -64,12 +64,22 @@ public extension Tictoc {
 		return s..<e
 	}
 
+	/// this hour
 	public var thisHour: Hour {
 		var now_tm = self.nowTm
 		now_tm.tm_min = 0
 		now_tm.tm_sec = 0
 		let s = timelocal(&now_tm)
 		let e = s + SEC_PER_HOUR
+		return s..<e
+	}
+
+	/// this minute
+	public var thisMinute: Minute {
+		var now_tm = self.nowTm
+		now_tm.tm_sec = 0
+		let s = timelocal(&now_tm)
+		let e = s + SEC_PER_MINUTE
 		return s..<e
 	}
 }
