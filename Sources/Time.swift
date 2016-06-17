@@ -38,7 +38,13 @@ public let tToday = Tictoc().today
 // MARK: -
 public extension Tictoc {
 	/// current now
-	public var now: Time { return time(nil) }
+	public var now: Time {
+		return time(nil)
+	}
+	private var nowTm: Tm {
+		var now = self.now
+		return localtime(&now).pointee
+	}
 
 	/// current moment
 	public var moment: Moment {
@@ -49,13 +55,21 @@ public extension Tictoc {
 
 	/// today
 	public var today: Day {
-		var now = self.now
-		var now_tm = localtime(&now).pointee
+		var now_tm = self.nowTm
 		now_tm.tm_hour = 0
 		now_tm.tm_min = 0
 		now_tm.tm_sec = 0
 		let s = timelocal(&now_tm)
 		let e = s + SEC_PER_DAY
+		return s..<e
+	}
+
+	public var thisHour: Hour {
+		var now_tm = self.nowTm
+		now_tm.tm_min = 0
+		now_tm.tm_sec = 0
+		let s = timelocal(&now_tm)
+		let e = s + SEC_PER_HOUR
 		return s..<e
 	}
 }
