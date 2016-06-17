@@ -32,7 +32,7 @@
 		__PBXFileRef_TictocTestSuite_Info.plist /* TictocTestSuite_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TictocTestSuite_Info.plist; path = Tictoc.xcodeproj/TictocTestSuite_Info.plist; sourceTree = SOURCE_ROOT; };
 		__PBXFileRef_Tictoc_Info.plist /* Tictoc_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Tictoc_Info.plist; path = Tictoc.xcodeproj/Tictoc_Info.plist; sourceTree = SOURCE_ROOT; };
 		"_____Product_Tictoc" /* Tictoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tictoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TictocTestSuite" /* TictocTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TictocTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TictocTestSuite" /* TictocTestSuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TictocTestSuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +170,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"______Target_Tictoc" = {
+						DevelopmentTeam = 6YEF27W7HZ;
+						DevelopmentTeamName = "Newbee Inc.";
+					};
+				};
 			};
 			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Tictoc" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,6 +227,8 @@
 		_ReleaseConf_Tictoc /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = Tictoc.xcodeproj/Tictoc_Info.plist;
@@ -229,6 +237,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -247,6 +256,8 @@
 		"___DebugConf_Tictoc" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = Tictoc.xcodeproj/Tictoc_Info.plist;
@@ -255,6 +266,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
