@@ -92,10 +92,8 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func secondsAgo(_ c: Int) -> Timeinterval {
-		let e = tNow
-		let s = e - c
-		return s..<e
+	public func secondsAgo(_ c: Int) -> Time {
+		return tNow - c
 	}
 
 	/**
@@ -105,10 +103,8 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func minutesAgo(_ c: Int) -> Timeinterval {
-		let e = tNow
-		let s = e - c * SEC_PER_MINUTE
-		return s..<e
+	public func minutesAgo(_ c: Int) -> Time {
+		return tNow - c * SEC_PER_MINUTE
 	}
 
 	/**
@@ -118,10 +114,8 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func hoursAgo(_ c: Int) -> Timeinterval {
-		let e = tNow
-		let s = e - c * SEC_PER_HOUR
-		return s..<e
+	public func hoursAgo(_ c: Int) -> Time {
+		return tNow - c * SEC_PER_HOUR
 	}
 
 
