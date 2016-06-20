@@ -84,5 +84,20 @@ public extension Tictoc {
 		let e = s + SEC_PER_MINUTE
 		return s..<e
 	}
+
+	/**
+	get an interval of specified hours before now
+	
+	- parameter c: count of hours specified
+
+	- returns: return Timeinterval range
+	*/
+	public func hoursAgo(_ c: Int) -> Timeinterval {
+		let e = tNow
+		let s = e - c * SEC_PER_HOUR
+		return s..<e
+	}
+
+
 }
 
