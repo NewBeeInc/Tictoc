@@ -66,6 +66,13 @@ public extension Tictoc {
 		return s..<e
 	}
 
+	/// tomorrow
+	public var tomorrow: Day {
+		let s = self.today.upperBound
+		let e = s + SEC_PER_DAY
+		return s..<e
+	}
+
 	/// this hour
 	public var thisHour: Hour {
 		var now_tm = self.nowTm
