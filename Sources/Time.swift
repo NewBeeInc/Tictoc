@@ -34,6 +34,8 @@ let SEC_PER_MINUTE = 60
 public let tNow = Tictoc().now
 public let tMoment = Tictoc().moment
 public let tToday = Tictoc().today
+public let tThisHour = Tictoc().thisHour
+public let tThisMinute = Tictoc().thisMinute
 
 // MARK: -
 public extension Tictoc {
