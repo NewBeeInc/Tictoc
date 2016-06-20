@@ -36,6 +36,7 @@ public let tMoment = Tictoc().moment
 public let tToday = Tictoc().today
 public let tThisHour = Tictoc().thisHour
 public let tThisMinute = Tictoc().thisMinute
+public let tTomorrow = Tictoc().tomorrow
 
 // MARK: -
 public extension Tictoc {
