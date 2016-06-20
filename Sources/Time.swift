@@ -37,6 +37,7 @@ public let tToday = Tictoc().today
 public let tThisHour = Tictoc().thisHour
 public let tThisMinute = Tictoc().thisMinute
 public let tTomorrow = Tictoc().tomorrow
+public let tYesterday = Tictoc().yesterday
 
 // MARK: -
 public extension Tictoc {
@@ -71,6 +72,13 @@ public extension Tictoc {
 	public var tomorrow: Day {
 		let s = self.today.upperBound
 		let e = s + SEC_PER_DAY
+		return s..<e
+	}
+
+	/// yesterday
+	public var yesterday: Day {
+		let e = self.today.lowerBound
+		let s = e - SEC_PER_DAY
 		return s..<e
 	}
 
