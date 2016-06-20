@@ -86,6 +86,19 @@ public extension Tictoc {
 	}
 
 	/**
+	get an interval of specified seconds before now
+
+	- parameter c: count of seconds specified
+
+	- returns: return Timeinterval range
+	*/
+	public func secondsAgo(_ c: Int) -> Timeinterval {
+		let e = tNow
+		let s = e - c
+		return s..<e
+	}
+
+	/**
 	get an interval of specified minutes before now
 
 	- parameter c: count of minutes specified
