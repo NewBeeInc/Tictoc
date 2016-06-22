@@ -8,6 +8,12 @@ class TictocTests: XCTestCase {
 		XCTAssertTrue(tNow >= tToday.lowerBound)
 		XCTAssertTrue(tNow < tToday.upperBound)
 		XCTAssertTrue(Double(tNow) <= tMoment)
+		XCTAssertTrue(tNow >= tYesterday.upperBound)
+		XCTAssertTrue(tNow < tTomorrow.lowerBound)
+		XCTAssertTrue(tYesterday.upperBound < tTomorrow.lowerBound)
+
+		XCTAssertTrue(Tictoc().dayFromShortDate("2016-06-22")?.upperBound <= tToday.upperBound)
+		XCTAssertTrue(Tictoc().dayFromShortDate("2016-06-22")?.lowerBound <= tToday.lowerBound)
     }
 
 
