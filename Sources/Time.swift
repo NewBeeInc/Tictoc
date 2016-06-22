@@ -27,37 +27,48 @@ public typealias Week         = Range<Time>
 public typealias Month        = Range<Time>
 public typealias Year         = Range<Time>
 
+/// number of sec in a day
 let SEC_PER_DAY = 86400
+/// number of sec in a hour
 let SEC_PER_HOUR = 3600
+/// number of sec in a minute
 let SEC_PER_MINUTE = 60
 
+/// now in Int
 public let tNow = Tictoc().now
+/// now in Double
 public let tMoment = Tictoc().moment
+/// today in Range of Time
 public let tToday = Tictoc().today
+/// this hour in Range of Time
 public let tThisHour = Tictoc().thisHour
+/// this minute in Range of Time
 public let tThisMinute = Tictoc().thisMinute
+/// tomorrow in Range of Time
 public let tTomorrow = Tictoc().tomorrow
+/// yesterday in Range of Time
 public let tYesterday = Tictoc().yesterday
 
 // MARK: -
 public extension Tictoc {
-	/// current now
+	/// now in Time
 	public var now: Time {
 		return time(nil)
 	}
+    /// now in Tm
 	private var nowTm: Tm {
 		var now = self.now
 		return localtime(&now).pointee
 	}
 
-	/// current moment
+	/// now in Moment
 	public var moment: Moment {
 		var tv = timeval()
 		gettimeofday(&tv, nil)
 		return Double(tv.tv_sec) + Double(tv.tv_usec) / Double(1_000_000)
 	}
 
-	/// today
+	/// today in Range of Time
 	public var today: Day {
 		var now_tm = self.nowTm
 		now_tm.tm_hour = 0
@@ -68,21 +79,21 @@ public extension Tictoc {
 		return s..<e
 	}
 
-	/// tomorrow
+	/// tomorrow in Range of Time
 	public var tomorrow: Day {
 		let s = self.today.upperBound
 		let e = s + SEC_PER_DAY
 		return s..<e
 	}
 
-	/// yesterday
+	/// yesterday in Range of Time
 	public var yesterday: Day {
 		let e = self.today.lowerBound
 		let s = e - SEC_PER_DAY
 		return s..<e
 	}
 
-	/// this minute
+	/// this minute in Range of Time
 	public var thisMinute: Minute {
 		var now_tm = self.nowTm
 		now_tm.tm_sec = 0
@@ -91,7 +102,7 @@ public extension Tictoc {
 		return s..<e
 	}
 
-	/// this hour
+	/// this hour in Range of Time
 	public var thisHour: Hour {
 		var now_tm = self.nowTm
 		now_tm.tm_min = 0
