@@ -149,17 +149,14 @@ public extension Tictoc {
 		let nMatch = Regex.ShortDate.numberOfMatches(in: date, options: .reportProgress, range: NSMakeRange(0, date.characters.count))
 		guard nMatch > 0
 			else { return nil }
-		let yl = 4, ml = 2, dl = 2
-		let ysi = date.startIndex, yei = date.index(ysi, offsetBy: yl)
-		let msi = yei, mei = date.index(msi, offsetBy: ml)
-		let dsi = mei, dei = date.index(dsi, offsetBy: dl)
-		let yrg = ysi ..< yei, mrg = msi ..< mei, drg = dsi ..< dei
-		let y = date.substring(with: yrg)
-		let m = date.substring(with: mrg)
-		let d = date.substring(with: drg)
+		let comps = date.components(separatedBy: "-")
+		let y = comps[0]
+		let m = comps[1]
+		let d = comps[2]
+
 		var t_tm = tm()
-		t_tm.tm_year = Int32(y) ?? 1900 - 1900
-		t_tm.tm_mon = Int32(m) ?? 0
+		t_tm.tm_year = (Int32(y) ?? 1900) - 1900
+		t_tm.tm_mon = max((Int32(m) ?? 0) - 1, 0)
 		t_tm.tm_mday = Int32(d) ?? 0
 		t_tm.tm_hour = 0
 		t_tm.tm_min = 0
