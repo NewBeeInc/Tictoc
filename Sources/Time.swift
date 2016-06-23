@@ -229,4 +229,14 @@ extension Time {
 		let S = tm.tm_sec
 		return "\(H >= 10 ? "" : "0")\(H):\(M >= 10 ? "" : "0")\(M):\(S >= 10 ? "" : "0")\(S)"
 	}
+
+	/**
+	convert a Time value into full date/time string in format "yyyy-mm-dd HH:MM:SS"
+
+	- returns: return full date/time string in format "yyyy-mm-dd HH:MM:SS"
+	*/
+	public func toDateFull() -> String {
+		return "\(self.toDateShort()) \(self.toTimeShort())"
+	}
 }
+
