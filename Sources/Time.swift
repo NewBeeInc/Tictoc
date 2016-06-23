@@ -199,3 +199,20 @@ public extension Tictoc {
 		return tYesterday.contains(time)
 	}
 }
+
+extension Time {
+
+	/**
+	convert a Time value into date string in format "yyyy-mm-dd"
+
+	- returns: return date string in format "yyyy-mm-dd"
+	*/
+	public func toDateShort() -> String {
+		var t = self
+		let tm = localtime(&t).pointee
+		let y = tm.tm_year + 1900
+		let m = tm.tm_mon + 1
+		let d = tm.tm_mday
+		return "\(y)-\(m < 10 ? "0" : "")\(m)-\(d < 10 ? "0" : "")\(d)"
+	}
+}
