@@ -240,3 +240,29 @@ extension Time {
 	}
 }
 
+extension Moment {
+
+	/**
+	convert a Moment value into short moment string in format "HH:MM:SS.ccc"
+
+	- returns: return full date/time string in format "HH:MM:SS.ccc"
+	*/
+	public func toMomentShort() -> String {
+		let t = Time(self)
+		let tStr = t.toTimeShort()
+		let usec = Int((self - Double(t)) * 1_000_000)
+		return "\(tStr).\(usec)"
+	}
+
+	/**
+	convert a Moment value into short moment string in format "yyyy-mm-dd HH:MM:SS.ccc"
+
+	- returns: return full date/time string in format "yyyy-mm-dd HH:MM:SS.ccc"
+	*/
+	public func toMomentFull() -> String {
+		let t = Time(self)
+		let tStr = t.toDateFull()
+		let usec = Int((self - Double(t)) * 1_000_000)
+		return "\(tStr).\(usec)"
+	}
+}
