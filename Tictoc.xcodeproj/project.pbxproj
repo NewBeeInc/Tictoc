@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70530DB31D1BB47B00104B24 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70530DB21D1BB47B00104B24 /* Regex.swift */; };
 		707C94051D1302AB00860F8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C94041D1302AB00860F8B /* Time.swift */; };
 		_LinkFileRef_Tictoc_via_TictocTestSuite /* Tictoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tictoc" /* Tictoc.framework */; };
 		__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70530DB21D1BB47B00104B24 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		707C94041D1302AB00860F8B /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tictoc.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */,
 				707C94041D1302AB00860F8B /* Time.swift */,
+				70530DB21D1BB47B00104B24 /* Regex.swift */,
 				__PBXFileRef_Tictoc_Info.plist /* Tictoc_Info.plist */,
 			);
 			name = Tictoc;
@@ -202,6 +205,7 @@
 			files = (
 				707C94051D1302AB00860F8B /* Time.swift in Sources */,
 				__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */,
+				70530DB31D1BB47B00104B24 /* Regex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
