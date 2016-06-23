@@ -146,6 +146,13 @@ public extension Tictoc {
 		return tNow - c * SEC_PER_HOUR
 	}
 
+	/**
+	get a Day value from short date string in format "yyyy-mm-dd", please note that any format other than this will get a nil return value;
+
+	- parameter date: a string of date, shall be in format "yyyy-mm-dd";
+
+	- returns: return Day value if date string is valid, otherwise nil
+	*/
 	public func dayFromShortDate(_ date: String) -> Day? {
 		let nMatch = Regex.ShortDate.numberOfMatches(in: date, options: .reportProgress, range: NSMakeRange(0, date.characters.count))
 		guard nMatch > 0
