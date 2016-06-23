@@ -175,5 +175,27 @@ public extension Tictoc {
 		return s..<e
 	}
 
+	public func isTheDayToday(_ day: Day) -> Bool {
+		return day == tToday
+	}
 
+	public func isTheDayYesterday(_ day: Day) -> Bool {
+		return day == tYesterday
+	}
+
+	public func isTheDayTomorrow(_ day: Day) -> Bool {
+		return day == tTomorrow
+	}
+
+	public func isToday(_ time: Time) -> Bool {
+		return tToday.contains(time)
+	}
+
+	public func isTomorrow(_ time: Time) -> Bool {
+		return tTomorrow.contains(time)
+	}
+
+	public func isYesterday(_ time: Time) -> Bool {
+		return tYesterday.contains(time)
+	}
 }
