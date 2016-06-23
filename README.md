@@ -4,7 +4,7 @@
 
 ### 1. 支持的Swift版本
 
-目前框架支持[Swift-3.0-preview-1-2016-06-13](https://swift.org/download/#releases).
+目前框架支持[Swift-3.0-preview-1-2016-06-13](https://swift.org/download/#releases), 安装方法请前往【swift.org](https://swift.org/).
 
 ### 2. 集成方法
 
