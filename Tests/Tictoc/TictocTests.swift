@@ -25,6 +25,7 @@ class TictocTests: XCTestCase {
 		XCTAssertTrue(Tictoc().dayFromShortDate(tNow.toDateShort()) == tToday)
 		print(tNow.toDateShort())
 		print(tNow.toTimeShort())
+		print(tNow.toDateFull())
     }
 
 
