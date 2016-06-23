@@ -215,4 +215,18 @@ extension Time {
 		let d = tm.tm_mday
 		return "\(y)-\(m < 10 ? "0" : "")\(m)-\(d < 10 ? "0" : "")\(d)"
 	}
+
+	/**
+	convert a Time value into time string in format "HH:MM:SS"
+
+	- returns: return time string in format "HH:MM:SS"
+	*/
+	public func toTimeShort() -> String {
+		var t = self
+		let tm = localtime(&t).pointee
+		let H = tm.tm_hour
+		let M = tm.tm_min
+		let S = tm.tm_sec
+		return "\(H >= 10 ? "" : "0")\(H):\(M >= 10 ? "" : "0")\(M):\(S >= 10 ? "" : "0")\(S)"
+	}
 }
