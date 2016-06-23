@@ -26,6 +26,8 @@ class TictocTests: XCTestCase {
 		print(tNow.toDateShort())
 		print(tNow.toTimeShort())
 		print(tNow.toDateFull())
+		print(tMoment.toMomentShort())
+		print(tMoment.toMomentFull())
     }
 
 
