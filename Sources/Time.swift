@@ -19,7 +19,7 @@ public typealias Moment = Double
 public typealias Tm     = tm
 public typealias Tv     = timeval
 
-piblic typealias Duration     = Range<Moment>
+public typealias Duration     = Range<Moment>
 public typealias Timeinterval = Range<Time>
 public typealias Minute       = Range<Time>
 public typealias Hour         = Range<Time>
