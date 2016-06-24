@@ -13,6 +13,7 @@
 #endif
 
 import Foundation
+import GCD
 
 public typealias Time   = time_t
 public typealias Moment = Double
