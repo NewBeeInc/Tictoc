@@ -1,5 +1,8 @@
 import PackageDescription
 
 let package = Package(
-    name: "Tictoc"
+    name: "Tictoc",
+    dependencies: [
+		.Package(url: "https://github.com/NewBeeInc/CDispatch.git", Version(0,0,0)..<Version(10,0,0))
+	]
 )
