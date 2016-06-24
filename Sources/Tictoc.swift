@@ -1,4 +1,8 @@
-import Dispatch
+#if os(Linux)
+	import CDispatch
+#else
+	import Dispatch
+#endif
 
 public class Tictoc {
 

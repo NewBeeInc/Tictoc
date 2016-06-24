@@ -6,8 +6,13 @@
 //
 //
 
+#if os(Linux)
+	import CDispatch
+#else
+	import Dispatch
+#endif
+
 import Foundation
-import Dispatch
 
 internal protocol TaskDelegate {
 	func task(didFinish task: Task) -> Void

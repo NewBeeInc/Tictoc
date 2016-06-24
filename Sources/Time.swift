@@ -8,9 +8,10 @@
 
 #if os(Linux) || os(FreeBSD)
 	import Glibc
-	import libdispatch
+	import CDispatch
 #else
 	import Darwin
+	import Dispatch
 #endif
 
 import Foundation
