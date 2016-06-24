@@ -31,7 +31,7 @@ public extension Tictoc {
 		let countDownTask = CountDownTask(identifier: identifier, from: from, to: to, interval: interval, at: at, finish: finish)
 		if !self.taskPool.contains(countDownTask) {
 			self.taskPool.insert(countDownTask)
-			countDownTask.delegate = self
+//			countDownTask.delegate = self
 			countDownTask.startCountDown(from: from)
 		} else {
 			let index = self.taskPool.index(of: countDownTask)

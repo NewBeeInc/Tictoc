@@ -47,7 +47,7 @@ class CountDownTask: Task {
 	private var queue: DispatchQueue?
 
 	/// delegate
-	internal weak var delegate: TaskDelegate?
+//	internal var delegate: TaskDelegate
 
 	/**
 	initializer
@@ -122,9 +122,9 @@ internal extension CountDownTask {
 	internal func stopCountDown() {
 		DispatchQueue.main.async {
 			self.finish?()
-			if self.delegate?.responds(to: Selector(("taskWithDidFinish:"))) == true {
-				self.delegate!.task(didFinish: self)
-			}
+//			if self.delegate.responds(to: Selector(("taskWithDidFinish:"))) == true {
+//				self.delegate.task(didFinish: self)
+//			}
 		}
 	}
 
