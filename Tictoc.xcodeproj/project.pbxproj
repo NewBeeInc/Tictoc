@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		70530DB31D1BB47B00104B24 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70530DB21D1BB47B00104B24 /* Regex.swift */; };
 		707C94051D1302AB00860F8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C94041D1302AB00860F8B /* Time.swift */; };
+		70F33FA61D1D15EA00D5F017 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F33FA51D1D15EA00D5F017 /* Task.swift */; };
 		_LinkFileRef_Tictoc_via_TictocTestSuite /* Tictoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tictoc" /* Tictoc.framework */; };
 		__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */; };
 		__src_cc_ref_Tests/Tictoc/TictocTests.swift /* TictocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Tictoc/TictocTests.swift /* TictocTests.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		70530DB21D1BB47B00104B24 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		707C94041D1302AB00860F8B /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		70F33FA51D1D15EA00D5F017 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tictoc.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/Tictoc/TictocTests.swift /* TictocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TictocTests.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				__PBXFileRef_Sources/Tictoc.swift /* Tictoc.swift */,
 				707C94041D1302AB00860F8B /* Time.swift */,
 				70530DB21D1BB47B00104B24 /* Regex.swift */,
+				70F33FA51D1D15EA00D5F017 /* Task.swift */,
 				__PBXFileRef_Tictoc_Info.plist /* Tictoc_Info.plist */,
 			);
 			name = Tictoc;
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				70F33FA61D1D15EA00D5F017 /* Task.swift in Sources */,
 				707C94051D1302AB00860F8B /* Time.swift in Sources */,
 				__src_cc_ref_Sources/Tictoc.swift /* Tictoc.swift in Sources */,
 				70530DB31D1BB47B00104B24 /* Regex.swift in Sources */,
