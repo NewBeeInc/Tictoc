@@ -37,41 +37,41 @@ let SEC_PER_HOUR = 3600
 let SEC_PER_MINUTE = 60
 
 /// now in Int
-public let tNow = Tictoc().now
+public let tNow = Tictoc.now
 /// now in Double
-public let tMoment = Tictoc().moment
+public let tMoment = Tictoc.moment
 /// today in Range of Time
-public let tToday = Tictoc().today
+public let tToday = Tictoc.today
 /// this hour in Range of Time
-public let tThisHour = Tictoc().thisHour
+public let tThisHour = Tictoc.thisHour
 /// this minute in Range of Time
-public let tThisMinute = Tictoc().thisMinute
+public let tThisMinute = Tictoc.thisMinute
 /// tomorrow in Range of Time
-public let tTomorrow = Tictoc().tomorrow
+public let tTomorrow = Tictoc.tomorrow
 /// yesterday in Range of Time
-public let tYesterday = Tictoc().yesterday
+public let tYesterday = Tictoc.yesterday
 
 // MARK: -
 public extension Tictoc {
 	/// now in Time
-	public var now: Time {
+	public class var now: Time {
 		return time(nil)
 	}
     /// now in Tm
-	private var nowTm: Tm {
+	private class var nowTm: Tm {
 		var now = self.now
 		return localtime(&now).pointee
 	}
 
 	/// now in Moment
-	public var moment: Moment {
+	public class var moment: Moment {
 		var tv = timeval()
 		gettimeofday(&tv, nil)
 		return Double(tv.tv_sec) + Double(tv.tv_usec) / Double(1_000_000)
 	}
 
 	/// today in Range of Time
-	public var today: Day {
+	public class var today: Day {
 		var now_tm = self.nowTm
 		now_tm.tm_hour = 0
 		now_tm.tm_min = 0
@@ -82,21 +82,21 @@ public extension Tictoc {
 	}
 
 	/// tomorrow in Range of Time
-	public var tomorrow: Day {
+	public class var tomorrow: Day {
 		let s = self.today.upperBound
 		let e = s + SEC_PER_DAY
 		return s..<e
 	}
 
 	/// yesterday in Range of Time
-	public var yesterday: Day {
+	public class var yesterday: Day {
 		let e = self.today.lowerBound
 		let s = e - SEC_PER_DAY
 		return s..<e
 	}
 
 	/// this minute in Range of Time
-	public var thisMinute: Minute {
+	public class var thisMinute: Minute {
 		var now_tm = self.nowTm
 		now_tm.tm_sec = 0
 		let s = timelocal(&now_tm)
@@ -105,7 +105,7 @@ public extension Tictoc {
 	}
 
 	/// this hour in Range of Time
-	public var thisHour: Hour {
+	public class var thisHour: Hour {
 		var now_tm = self.nowTm
 		now_tm.tm_min = 0
 		now_tm.tm_sec = 0
@@ -121,7 +121,7 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func secondsAgo(_ c: Int) -> Time {
+	public class func secondsAgo(_ c: Int) -> Time {
 		return tNow - c
 	}
 
@@ -132,7 +132,7 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func minutesAgo(_ c: Int) -> Time {
+	public class func minutesAgo(_ c: Int) -> Time {
 		return tNow - c * SEC_PER_MINUTE
 	}
 
@@ -143,7 +143,7 @@ public extension Tictoc {
 
 	- returns: return Timeinterval range
 	*/
-	public func hoursAgo(_ c: Int) -> Time {
+	public class func hoursAgo(_ c: Int) -> Time {
 		return tNow - c * SEC_PER_HOUR
 	}
 
@@ -154,7 +154,7 @@ public extension Tictoc {
 
 	- returns: return Day value if date string is valid, otherwise nil
 	*/
-	public func dayFromShortDate(_ date: String) -> Day? {
+	public class func dayFromShortDate(_ date: String) -> Day? {
 		let nMatch = Regex.ShortDate.numberOfMatches(in: date, options: .reportProgress, range: NSMakeRange(0, date.characters.count))
 		guard nMatch > 0
 			else { return nil }
@@ -176,27 +176,27 @@ public extension Tictoc {
 		return s..<e
 	}
 
-	public func isTheDayToday(_ day: Day) -> Bool {
+	public class func isTheDayToday(_ day: Day) -> Bool {
 		return day == tToday
 	}
 
-	public func isTheDayYesterday(_ day: Day) -> Bool {
+	public class func isTheDayYesterday(_ day: Day) -> Bool {
 		return day == tYesterday
 	}
 
-	public func isTheDayTomorrow(_ day: Day) -> Bool {
+	public class func isTheDayTomorrow(_ day: Day) -> Bool {
 		return day == tTomorrow
 	}
 
-	public func isToday(_ time: Time) -> Bool {
+	public class func isToday(_ time: Time) -> Bool {
 		return tToday.contains(time)
 	}
 
-	public func isTomorrow(_ time: Time) -> Bool {
+	public class func isTomorrow(_ time: Time) -> Bool {
 		return tTomorrow.contains(time)
 	}
 
-	public func isYesterday(_ time: Time) -> Bool {
+	public class func isYesterday(_ time: Time) -> Bool {
 		return tYesterday.contains(time)
 	}
 }

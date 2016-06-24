@@ -12,17 +12,17 @@ class TictocTests: XCTestCase {
 		XCTAssertTrue(tNow < tTomorrow.lowerBound)
 		XCTAssertTrue(tYesterday.upperBound < tTomorrow.lowerBound)
 
-		XCTAssertTrue(Tictoc().dayFromShortDate("2016-06-22")?.upperBound <= tToday.upperBound)
-		XCTAssertTrue(Tictoc().dayFromShortDate("2016-06-22")?.lowerBound <= tToday.lowerBound)
+		XCTAssertTrue(Tictoc.dayFromShortDate("2016-06-22")?.upperBound <= tToday.upperBound)
+		XCTAssertTrue(Tictoc.dayFromShortDate("2016-06-22")?.lowerBound <= tToday.lowerBound)
 
-		XCTAssertTrue(Tictoc().isTheDayToday(tToday))
-		XCTAssertFalse(Tictoc().isTheDayToday(tTomorrow))
-		XCTAssertFalse(Tictoc().isTheDayToday(tYesterday))
+		XCTAssertTrue(Tictoc.isTheDayToday(tToday))
+		XCTAssertFalse(Tictoc.isTheDayToday(tTomorrow))
+		XCTAssertFalse(Tictoc.isTheDayToday(tYesterday))
 
-		XCTAssertTrue(Tictoc().isToday(tNow))
-		XCTAssertFalse(Tictoc().isTomorrow(tNow))
+		XCTAssertTrue(Tictoc.isToday(tNow))
+		XCTAssertFalse(Tictoc.isTomorrow(tNow))
 
-		XCTAssertTrue(Tictoc().dayFromShortDate(tNow.toDateShort()) == tToday)
+		XCTAssertTrue(Tictoc.dayFromShortDate(tNow.toDateShort()) == tToday)
 		print(tNow.toDateShort())
 		print(tNow.toTimeShort())
 		print(tNow.toDateFull())
