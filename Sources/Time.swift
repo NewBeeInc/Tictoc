@@ -13,7 +13,7 @@
 #endif
 
 import Foundation
-import GCD
+import libdispatch
 
 public typealias Time   = time_t
 public typealias Moment = Double
