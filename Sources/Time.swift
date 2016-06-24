@@ -20,7 +20,7 @@ public typealias Moment = Double
 public typealias Tm     = tm
 public typealias Tv     = timeval
 
-piblic typealias Duration     = Range<Moment>
+public typealias Duration     = Range<Moment>
 public typealias Timeinterval = Range<Time>
 public typealias Minute       = Range<Time>
 public typealias Hour         = Range<Time>
@@ -147,6 +147,13 @@ public extension Tictoc {
 		return tNow - c * SEC_PER_HOUR
 	}
 
+	/**
+	get a Day value from short date string in format "yyyy-mm-dd", please note that any format other than this will get a nil return value;
+
+	- parameter date: a string of date, shall be in format "yyyy-mm-dd";
+
+	- returns: return Day value if date string is valid, otherwise nil
+	*/
 	public func dayFromShortDate(_ date: String) -> Day? {
 		let nMatch = Regex.ShortDate.numberOfMatches(in: date, options: .reportProgress, range: NSMakeRange(0, date.characters.count))
 		guard nMatch > 0
@@ -169,21 +176,94 @@ public extension Tictoc {
 		return s..<e
 	}
 
+	public func isTheDayToday(_ day: Day) -> Bool {
+		return day == tToday
+	}
 
+	public func isTheDayYesterday(_ day: Day) -> Bool {
+		return day == tYesterday
+	}
+
+	public func isTheDayTomorrow(_ day: Day) -> Bool {
+		return day == tTomorrow
+	}
+
+	public func isToday(_ time: Time) -> Bool {
+		return tToday.contains(time)
+	}
+
+	public func isTomorrow(_ time: Time) -> Bool {
+		return tTomorrow.contains(time)
+	}
+
+	public func isYesterday(_ time: Time) -> Bool {
+		return tYesterday.contains(time)
+	}
 }
 
-struct RegexPattern {
-	static let FullDate = "[0-2]{1}\\d{3}\\-((((0[13578]{1})|(1[02]{1}))\\-((0[1-9]{1})|([12]{1}\\d{1})|(3[01]{1})))|(((0[469]{1})|(11))\\-((0[1-9]{1})|([12]{1}\\d{1})|(30)))|(02\\-((0[1-9]{1})|([12]{1}\\d{1}))))\\s(([01]{1}\\d{1})|2[0-3]{1}):[0-5]{1}\\d{1}:[0-5]{1}\\d{1}"
-	static let ShortDate = "[0-2]{1}\\d{3}\\-((((0[13578]{1})|(1[02]{1}))\\-((0[1-9]{1})|([12]{1}\\d{1})|(3[01]{1})))|(((0[469]{1})|(11))\\-((0[1-9]{1})|([12]{1}\\d{1})|(30)))|(02\\-((0[1-9]{1})|([12]{1}\\d{1}))))"
+extension Time {
+
+	/**
+	convert a Time value into date string in format "yyyy-mm-dd"
+
+	- returns: return date string in format "yyyy-mm-dd"
+	*/
+	public func toDateShort() -> String {
+		var t = self
+		let tm = localtime(&t).pointee
+		let y = tm.tm_year + 1900
+		let m = tm.tm_mon + 1
+		let d = tm.tm_mday
+		return "\(y)-\(m < 10 ? "0" : "")\(m)-\(d < 10 ? "0" : "")\(d)"
+	}
+
+	/**
+	convert a Time value into time string in format "HH:MM:SS"
+
+	- returns: return time string in format "HH:MM:SS"
+	*/
+	public func toTimeShort() -> String {
+		var t = self
+		let tm = localtime(&t).pointee
+		let H = tm.tm_hour
+		let M = tm.tm_min
+		let S = tm.tm_sec
+		return "\(H >= 10 ? "" : "0")\(H):\(M >= 10 ? "" : "0")\(M):\(S >= 10 ? "" : "0")\(S)"
+	}
+
+	/**
+	convert a Time value into full date/time string in format "yyyy-mm-dd HH:MM:SS"
+
+	- returns: return full date/time string in format "yyyy-mm-dd HH:MM:SS"
+	*/
+	public func toDateFull() -> String {
+		return "\(self.toDateShort()) \(self.toTimeShort())"
+	}
 }
 
-struct Regex {
-	#if os(Linux)
-	static let FullDate = try! NSRegularExpression(pattern: RegexPattern.FullDate, options: .caseInsensitive)
-	static let ShortDate = try! NSRegularExpression(pattern: RegexPattern.ShortDate, options: .caseInsensitive)
-	#else
-	static let FullDate = try! RegularExpression(pattern: RegexPattern.FullDate, options: .caseInsensitive)
-	static let ShortDate = try! RegularExpression(pattern: RegexPattern.ShortDate, options: .caseInsensitive)
-	#endif
-}
+extension Moment {
 
+	/**
+	convert a Moment value into short moment string in format "HH:MM:SS.ccc"
+
+	- returns: return full date/time string in format "HH:MM:SS.ccc"
+	*/
+	public func toMomentShort() -> String {
+		let t = Time(self)
+		let tStr = t.toTimeShort()
+		let usec = Int((self - Double(t)) * 1_000_000)
+		return "\(tStr).\(usec)"
+	}
+
+	/**
+	convert a Moment value into short moment string in format "yyyy-mm-dd HH:MM:SS.ccc"
+
+	- returns: return full date/time string in format "yyyy-mm-dd HH:MM:SS.ccc"
+	*/
+	public func toMomentFull() -> String {
+		let t = Time(self)
+		let tStr = t.toDateFull()
+		let usec = Int((self - Double(t)) * 1_000_000)
+		return "\(tStr).\(usec)"
+	}
+}
