@@ -8,12 +8,12 @@
 
 #if os(Linux) || os(FreeBSD)
 	import Glibc
+	import libdispatch
 #else
 	import Darwin
 #endif
 
 import Foundation
-import libdispatch
 
 public typealias Time   = time_t
 public typealias Moment = Double
