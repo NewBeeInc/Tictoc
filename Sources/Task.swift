@@ -14,7 +14,7 @@
 
 import Foundation
 
-internal protocol TaskDelegate {
+internal protocol TaskDelegate: class {
 	func task(didFinish task: Task) -> Void
 }
 
@@ -52,7 +52,7 @@ class CountDownTask: Task {
 	private var queue: DispatchQueue?
 
 	/// delegate
-//	internal var delegate: TaskDelegate
+	internal weak var delegate: TaskDelegate?
 
 	/**
 	initializer
