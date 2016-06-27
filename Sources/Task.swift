@@ -49,7 +49,11 @@ class CountDownTask: Task {
 	private var finish: (() -> Void)?
 
 	/// a concurrent queue on which the task is attached
+	#if os(Linux)
+	private var queue: dispatch_queue_t?
+	#else
 	private var queue: DispatchQueue?
+	#endif
 
 	/// delegate
 	internal weak var delegate: TaskDelegate?
@@ -82,7 +86,11 @@ class CountDownTask: Task {
 		self.interval   = interval
 		self.at         = at
 		self.finish     = finish
-		self.queue      = DispatchQueue(label: self.identifier, attributes: DispatchQueueAttributes.concurrent, target: nil)
+		#if os(Linux)
+			self.queue  = dispatch_queue_create(self.identifier, DISPATCH_QUEUE_CONCURRENT)
+		#else
+			self.queue  = DispatchQueue(label: self.identifier, attributes: DispatchQueueAttributes.concurrent, target: nil)
+		#endif
 	}
 }
 
@@ -94,9 +102,15 @@ internal extension CountDownTask {
 	- parameter from:  a number count down from
 	*/
 	internal func startCountDown(from: Int) {
-		self.queue!.async { [weak self] in
-			self?.countDown(at: from)
-		}
+		#if os(Linux)
+			dispatch_async(self.queue!, {[weak self] () -> Void in
+				self?.countDown(from)
+				})
+		#else
+			self.queue!.async { [weak self] in
+				self?.countDown(at: from)
+			}
+		#endif
 	}
 
 	/**
@@ -110,24 +124,41 @@ internal extension CountDownTask {
 			self.stopCountDown()
 			return
 		}
-
-		DispatchQueue.main.async { [weak self] in
-			self?.at?(at)
-		}
-
-		self.queue!.after(when: DispatchTime.now() + interval) {  [weak self] in
-			self?.countDown(at: at - 1)
-		}
+		#if os(Linux)
+			dispatch_async(dispatch_get_main_queue()) { () -> Void in
+				self.at?(at)
+			}
+			let step = dispatch_time(DISPATCH_TIME_NOW, Int64((interval) * Double(NSEC_PER_SEC)))
+			dispatch_after(step, self.queue!) {[weak self] () -> Void in
+				self?.countDown(at - 1)
+			}
+		#else
+			DispatchQueue.main.async { [weak self] in
+				self?.at?(at)
+			}
+			self.queue!.after(when: DispatchTime.now() + interval) {  [weak self] in
+				self?.countDown(at: at - 1)
+			}
+		#endif
 	}
 
 	/**
 	counting down finished
 	*/
 	internal func stopCountDown() {
+		#if os(Linux)
+		dispatch_async(dispatch_get_main_queue()) { () -> Void in
+			self.finish?()
+			if self.delegate?.respondsToSelector("taskWithDidFinish:") == true {
+				self.delegate!.task!(didFinish: self)
+			}
+		}
+		#else
 		DispatchQueue.main.async {
 			self.finish?()
 			self.delegate?.task(didFinish: self)
 		}
+		#endif
 	}
 
 	/**
