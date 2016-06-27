@@ -4,6 +4,10 @@
 	import Dispatch
 #endif
 
+/**
+ *	Tictoc is a light weight framework providing time releated functions,
+ *  for now, it's designed for Swift backend on Linux.
+ **/
 public class Tictoc {
 
 	/// singleton instance
