@@ -7,6 +7,7 @@
 //
 
 #if os(Linux)
+	import SwiftGlibc
 	import CDispatch
 #else
 	import Dispatch
